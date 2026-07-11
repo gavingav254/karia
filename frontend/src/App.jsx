@@ -1,11 +1,5 @@
-function App() {
-  return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center">
-      <h1 className="text-6xl font-bold text-emerald-400">
-        KARIA
-      </h1>
-    </div>
-  );
-}
+import AppRouter from "./routes/AppRouter";
 
-export default App;
+export default function App() {
+  return <AppRouter />;
+}
