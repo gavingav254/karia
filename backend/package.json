@@ -1,0 +1,14 @@
+{
+  "name": "karia-backend",
+  "version": "1.0.0",
+  "description": "KARIA Backend API",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  }
+}
