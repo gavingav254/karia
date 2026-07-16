@@ -31,9 +31,10 @@ export default function AssignmentAnalyzer() {
 
       const result = await analyzeAssignment(assignmentText);
 
-      console.log("Gemma Response:", result);
+      console.log("Gemma Response:");
+console.log(result);
 
-      setAnalysis(result);
+setAnalysis(result);
 
     } catch (error) {
       console.error(error);

@@ -5,6 +5,7 @@ import Dashboard from "../pages/Dashboard";
 import AssignmentAnalyzer from "../pages/AssignmentAnalyzer";
 import ChatAnalyzer from "../pages/ChatAnalyzer";
 import KariaMatch from "../pages/KariaMatch";
+import Opportunities from "../pages/Opportunities";
 import NotFound from "../pages/NotFound";
 
 export default function AppRouter() {
@@ -15,6 +16,7 @@ export default function AppRouter() {
       <Route path="/assignment" element={<AssignmentAnalyzer />} />
       <Route path="/chat" element={<ChatAnalyzer />} />
       <Route path="/match" element={<KariaMatch />} />
+      <Route path="/opportunities" element={<Opportunities />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

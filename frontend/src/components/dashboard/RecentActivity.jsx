@@ -1,52 +1,97 @@
 const activities = [
   {
+    icon: "📄",
     title: "Assignment analyzed",
-    description: "Software Engineering CAT uploaded and summarized.",
-    time: "10 min ago",
+    time: "2 minutes ago",
+    color: "bg-emerald-500",
   },
   {
-    title: "Group chat processed",
-    description: "Extracted 6 tasks and 2 deadlines.",
-    time: "35 min ago",
+    icon: "🤖",
+    title: "KARIA GPT answered your research question",
+    time: "8 minutes ago",
+    color: "bg-cyan-500",
   },
   {
-    title: "New opportunity",
-    description: "React Developer request matched your profile.",
-    time: "1 hr ago",
+    icon: "🤝",
+    title: "New 98% internship match found",
+    time: "15 minutes ago",
+    color: "bg-purple-500",
+  },
+  {
+    icon: "💼",
+    title: "Google Gemma Hackathon recommended",
+    time: "1 hour ago",
+    color: "bg-orange-500",
+  },
+  {
+    icon: "🎓",
+    title: "Scholarship deadline approaching",
+    time: "Today",
+    color: "bg-pink-500",
   },
 ];
 
 export default function RecentActivity() {
   return (
-    <section className="mt-12">
-      <h2 className="text-3xl font-bold mb-6">
-        Recent Activity
-      </h2>
+    <section className="mb-12">
 
-      <div className="space-y-4">
-        {activities.map((activity) => (
+      <div className="flex justify-between items-center mb-6">
+
+        <h2 className="text-3xl font-black">
+          📈 Recent Activity
+        </h2>
+
+        <span className="text-gray-400">
+          Live AI Updates
+        </span>
+
+      </div>
+
+      <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
+
+        {activities.map((activity, index) => (
+
           <div
-            key={activity.title}
-            className="rounded-2xl bg-white/5 border border-white/10 p-5 hover:border-emerald-400 transition"
+            key={index}
+            className={`flex items-center justify-between py-5 ${
+              index !== activities.length - 1
+                ? "border-b border-white/10"
+                : ""
+            }`}
           >
-            <div className="flex justify-between items-start">
+
+            <div className="flex items-center gap-5">
+
+              <div
+                className={`w-12 h-12 rounded-full ${activity.color} flex items-center justify-center text-xl`}
+              >
+                {activity.icon}
+              </div>
+
               <div>
+
                 <h3 className="font-semibold text-lg">
                   {activity.title}
                 </h3>
 
-                <p className="text-gray-400 mt-2">
-                  {activity.description}
+                <p className="text-gray-400 text-sm">
+                  {activity.time}
                 </p>
+
               </div>
 
-              <span className="text-sm text-emerald-400">
-                {activity.time}
-              </span>
             </div>
+
+            <span className="text-emerald-400 font-semibold">
+              Completed
+            </span>
+
           </div>
+
         ))}
+
       </div>
+
     </section>
   );
 }

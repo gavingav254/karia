@@ -1,55 +1,75 @@
+import { dashboardStats } from "../../data/appData";
+
 const cards = [
   {
     title: "Assignments",
-    value: "04",
-    description: "Pending assignments",
+    value: dashboardStats.assignments,
     icon: "📄",
-  },
-  {
-    title: "Tasks",
-    value: "11",
-    description: "Upcoming tasks",
-    icon: "✅",
-  },
-  {
-    title: "Skill Matches",
-    value: "08",
-    description: "New opportunities",
-    icon: "🤝",
+    color: "from-emerald-500 to-green-600",
+    subtitle: "Pending analysis",
   },
   {
     title: "AI Insights",
-    value: "05",
-    description: "Fresh recommendations",
+    value: dashboardStats.insights,
     icon: "🧠",
+    color: "from-cyan-500 to-blue-600",
+    subtitle: "Generated today",
+  },
+  {
+    title: "Skill Matches",
+    value: dashboardStats.matches,
+    icon: "🤝",
+    color: "from-purple-500 to-indigo-600",
+    subtitle: "Career matches",
+  },
+  {
+    title: "Opportunities",
+    value: dashboardStats.opportunities,
+    icon: "💼",
+    color: "from-orange-500 to-red-500",
+    subtitle: "Available now",
   },
 ];
 
 export default function OverviewCards() {
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-12">
+    <section className="grid md:grid-cols-2 xl:grid-cols-4 gap-6 mb-12">
+
       {cards.map((card) => (
+
         <div
           key={card.title}
-          className="bg-white/5 border border-white/10 rounded-3xl p-6 hover:border-emerald-400 hover:bg-white/10 transition duration-300"
+          className={`bg-gradient-to-r ${card.color} rounded-3xl p-7 shadow-xl hover:scale-105 transition duration-300`}
         >
-          <div className="text-4xl mb-4">
-            {card.icon}
+
+          <div className="flex justify-between items-center">
+
+            <div>
+
+              <p className="text-white/80 text-sm">
+                {card.title}
+              </p>
+
+              <h2 className="text-5xl font-black mt-2">
+                {card.value}
+              </h2>
+
+              <p className="mt-3 text-white/80 text-sm">
+                {card.subtitle}
+              </p>
+
+            </div>
+
+            <div className="text-5xl">
+              {card.icon}
+            </div>
+
           </div>
 
-          <h3 className="text-xl font-semibold">
-            {card.title}
-          </h3>
-
-          <h1 className="text-5xl font-black mt-4 text-emerald-400">
-            {card.value}
-          </h1>
-
-          <p className="text-gray-400 mt-4">
-            {card.description}
-          </p>
         </div>
+
       ))}
+
     </section>
   );
 }

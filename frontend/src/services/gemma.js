@@ -1,7 +1,6 @@
 /**
  * ==========================================================
  * KARIA Backend Client
- * ----------------------------------------------------------
  * React → FastAPI → Gemma
  * ==========================================================
  */
@@ -20,10 +19,20 @@ export async function askGemma(prompt) {
   });
 
   if (!response.ok) {
-    throw new Error("Backend request failed.");
+    const error = await response.text();
+    throw new Error(error || "Backend request failed.");
   }
 
   const data = await response.json();
 
-  return data.response;
+  console.log("✅ Backend Response:");
+  console.log(data);
+
+  // Support BOTH formats
+
+  if (data.response) {
+    return data.response;
+  }
+
+  return data;
 }

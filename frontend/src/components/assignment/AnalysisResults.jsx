@@ -1,98 +1,173 @@
 export default function AnalysisResults({ result }) {
   if (!result) return null;
 
-  let data;
+  let data = result;
 
   try {
-    data =
-      typeof result.response === "string"
-        ? JSON.parse(result.response)
-        : result.response;
-  } catch {
+    // Handle different backend response shapes
+
+    if (typeof result === "string") {
+      data = JSON.parse(result);
+    }
+
+    if (data.response) {
+      data = data.response;
+
+      if (typeof data === "string") {
+        try {
+          data = JSON.parse(data);
+        } catch {
+          data = {
+            raw_response: data,
+          };
+        }
+      }
+    }
+
+    console.log("========== FINAL ANALYSIS ==========");
+    console.log(data);
+
+  } catch (err) {
+
+    console.error(err);
+
     return (
-      <section className="mt-10 rounded-3xl border border-red-500/30 bg-red-500/10 p-8">
-        <h2 className="text-2xl font-bold">
-          ❌ AI Response Error
+      <section className="mt-12 rounded-3xl border border-red-500/30 bg-red-500/10 p-8">
+
+        <h2 className="text-3xl font-black">
+          ❌ Invalid AI Response
         </h2>
 
-        <p className="mt-4 text-gray-300 whitespace-pre-wrap">
-          {result.response}
-        </p>
+        <pre className="mt-6 whitespace-pre-wrap text-sm">
+          {JSON.stringify(result, null, 2)}
+        </pre>
+
       </section>
     );
   }
 
+  const summary =
+    data.summary ||
+    data.raw_response ||
+    "No summary generated.";
+
+  const difficulty =
+    data.difficulty ||
+    "Unknown";
+
+  const estimatedHours =
+    data.estimated_hours ||
+    "Unknown";
+
+  const deadline =
+    data.deadline ||
+    "Not detected";
+
+  const remainingDays =
+    data.remaining_days ||
+    "";
+
+  const deliverables =
+    Array.isArray(data.deliverables)
+      ? data.deliverables
+      : [];
+
+  const studyPlan =
+    Array.isArray(data.study_plan)
+      ? data.study_plan
+      : [];
+
+  const risks =
+    Array.isArray(data.risks)
+      ? data.risks
+      : [];
+
+  const questions =
+    Array.isArray(data.questions_for_lecturer)
+      ? data.questions_for_lecturer
+      : [];
+
+  const checklist =
+    Array.isArray(data.submission_checklist)
+      ? data.submission_checklist
+      : [];
+
+  const recommendation =
+    data.recommendation ||
+    "No recommendation available.";
+
   return (
     <section className="mt-14 space-y-8">
 
-      {/* Header */}
+      {/* HERO */}
 
-      <div className="rounded-3xl bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 border border-emerald-500/30 p-8">
+      <div className="rounded-3xl border border-emerald-500/30 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 p-10">
 
         <h1 className="text-4xl font-black">
-          🤖 KARIA AI Analysis
+          🤖 KARIA Assignment Intelligence
         </h1>
 
-        <p className="mt-3 text-gray-300">
-          Generated completely offline using Gemma 4 LiteRT
+        <p className="mt-4 text-gray-300 leading-8">
+          AI-powered breakdown of your assignment with planning,
+          deliverables, risks and recommendations.
         </p>
 
       </div>
 
-      {/* Summary */}
+      {/* SUMMARY */}
 
-      <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
+      <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
 
-        <h2 className="text-2xl font-bold mb-5">
-          📄 Assignment Summary
+        <h2 className="text-2xl font-bold mb-6">
+          📝 Assignment Summary
         </h2>
 
-        <p className="text-gray-300 leading-8">
-          {data.summary}
+        <p className="leading-8 text-gray-300">
+          {summary}
         </p>
 
       </div>
 
-      {/* Stats */}
+      {/* OVERVIEW */}
 
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid lg:grid-cols-3 gap-6">
 
-        <div className="bg-white/5 rounded-3xl border border-white/10 p-6">
+        <div className="rounded-3xl bg-white/5 border border-white/10 p-7">
 
-          <h3 className="text-gray-400">
+          <p className="text-gray-400">
             Difficulty
-          </h3>
-
-          <p className="text-3xl font-black mt-2">
-            {data.difficulty}
           </p>
+
+          <h2 className="mt-3 text-4xl font-black">
+            {difficulty}
+          </h2>
 
         </div>
 
-        <div className="bg-white/5 rounded-3xl border border-white/10 p-6">
+        <div className="rounded-3xl bg-white/5 border border-white/10 p-7">
 
-          <h3 className="text-gray-400">
+          <p className="text-gray-400">
             Estimated Hours
-          </h3>
-
-          <p className="text-3xl font-black mt-2">
-            {data.estimated_hours}
           </p>
+
+          <h2 className="mt-3 text-4xl font-black">
+            {estimatedHours}
+          </h2>
 
         </div>
 
-        <div className="bg-white/5 rounded-3xl border border-white/10 p-6">
+        <div className="rounded-3xl bg-white/5 border border-white/10 p-7">
 
-          <h3 className="text-gray-400">
+          <p className="text-gray-400">
             Deadline
-          </h3>
-
-          <p className="text-3xl font-black mt-2 text-emerald-400">
-            {data.deadline}
           </p>
 
-          <p className="mt-2 text-gray-400">
-            {data.remaining_days}
+          <h2 className="mt-3 text-3xl font-black text-emerald-400">
+            {deadline}
+          </h2>
+
+          <p className="mt-3 text-gray-500">
+            {remainingDays}
           </p>
 
         </div>
@@ -100,136 +175,211 @@ export default function AnalysisResults({ result }) {
       </div>
 
       {/* Deliverables */}
+            {/* MAIN GRID */}
 
-      <div className="bg-white/5 rounded-3xl border border-white/10 p-8">
+      <div className="grid lg:grid-cols-2 gap-8">
 
-        <h2 className="text-2xl font-bold mb-6">
-          📦 Deliverables
-        </h2>
+        {/* Deliverables */}
 
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
 
-          {data.deliverables?.map((item, index) => (
+          <h2 className="text-2xl font-bold mb-6">
+            📦 Deliverables
+          </h2>
 
-            <div
-              key={index}
-              className="rounded-xl bg-white/5 p-4"
-            >
-              ✅ {item}
-            </div>
+          {deliverables.length > 0 ? (
 
-          ))}
+            <div className="space-y-4">
 
-        </div>
+              {deliverables.map((item, index) => (
 
-      </div>
+                <div
+                  key={index}
+                  className="rounded-xl bg-white/5 p-4 border border-white/5"
+                >
+                  ✅ {item}
+                </div>
 
-      {/* Study Plan */}
-
-      <div className="bg-white/5 rounded-3xl border border-white/10 p-8">
-
-        <h2 className="text-2xl font-bold mb-6">
-          📚 AI Study Plan
-        </h2>
-
-        <div className="space-y-5">
-
-          {data.study_plan?.map((step, index) => (
-
-            <div key={index}>
-
-              <h3 className="font-bold text-emerald-400">
-                {step.day}
-              </h3>
-
-              <p className="text-gray-300">
-                {step.task}
-              </p>
+              ))}
 
             </div>
 
-          ))}
+          ) : (
 
-        </div>
-
-      </div>
-
-      {/* Risks */}
-
-      <div className="bg-white/5 rounded-3xl border border-white/10 p-8">
-
-        <h2 className="text-2xl font-bold mb-6">
-          ⚠️ Risks
-        </h2>
-
-        <div className="space-y-3">
-
-          {data.risks?.map((risk, index) => (
-
-            <p key={index}>
-              • {risk}
+            <p className="text-gray-500">
+              No deliverables detected.
             </p>
 
-          ))}
+          )}
 
         </div>
 
-      </div>
+        {/* Study Plan */}
 
-      {/* Lecturer Questions */}
+        <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
 
-      <div className="bg-white/5 rounded-3xl border border-white/10 p-8">
+          <h2 className="text-2xl font-bold mb-6">
+            📚 AI Study Plan
+          </h2>
 
-        <h2 className="text-2xl font-bold mb-6">
-          ❓ Questions for Lecturer
-        </h2>
+          {studyPlan.length > 0 ? (
 
-        <div className="space-y-3">
+            <div className="space-y-5">
 
-          {data.questions_for_lecturer?.map((question, index) => (
+              {studyPlan.map((step, index) => (
 
-            <p key={index}>
-              • {question}
+                <div
+                  key={index}
+                  className="border-l-4 border-emerald-400 pl-5"
+                >
+
+                  <h3 className="font-bold text-emerald-400">
+
+                    {step.day || `Step ${index + 1}`}
+
+                  </h3>
+
+                  <p className="mt-2 text-gray-300">
+
+                    {step.task || step}
+
+                  </p>
+
+                </div>
+
+              ))}
+
+            </div>
+
+          ) : (
+
+            <p className="text-gray-500">
+              No study plan generated.
             </p>
 
-          ))}
+          )}
+
+        </div>
+
+        {/* Risks */}
+
+        <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+
+          <h2 className="text-2xl font-bold mb-6">
+            ⚠ Risks
+          </h2>
+
+          {risks.length > 0 ? (
+
+            <div className="space-y-4">
+
+              {risks.map((risk, index) => (
+
+                <div
+                  key={index}
+                  className="rounded-xl bg-red-500/10 border border-red-500/20 p-4"
+                >
+                  • {risk}
+                </div>
+
+              ))}
+
+            </div>
+
+          ) : (
+
+            <p className="text-gray-500">
+              No risks detected.
+            </p>
+
+          )}
+
+        </div>
+
+        {/* Questions */}
+
+        <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+
+          <h2 className="text-2xl font-bold mb-6">
+            ❓ Questions for Lecturer
+          </h2>
+
+          {questions.length > 0 ? (
+
+            <div className="space-y-4">
+
+              {questions.map((question, index) => (
+
+                <div
+                  key={index}
+                  className="rounded-xl bg-cyan-500/10 border border-cyan-500/20 p-4"
+                >
+                  • {question}
+                </div>
+
+              ))}
+
+            </div>
+
+          ) : (
+
+            <p className="text-gray-500">
+              No questions suggested.
+            </p>
+
+          )}
 
         </div>
 
       </div>
 
-      {/* Checklist */}
+      {/* CHECKLIST */}
 
-      <div className="bg-white/5 rounded-3xl border border-white/10 p-8">
+      <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
 
         <h2 className="text-2xl font-bold mb-6">
           ✅ Submission Checklist
         </h2>
 
-        <div className="space-y-3">
+        {checklist.length > 0 ? (
 
-          {data.submission_checklist?.map((item, index) => (
+          <div className="grid md:grid-cols-2 gap-4">
 
-            <p key={index}>
-              ☐ {item}
-            </p>
+            {checklist.map((item, index) => (
 
-          ))}
+              <div
+                key={index}
+                className="rounded-xl bg-white/5 border border-white/5 p-4"
+              >
+                ☐ {item}
+              </div>
 
-        </div>
+            ))}
+
+          </div>
+
+        ) : (
+
+          <p className="text-gray-500">
+            No checklist generated.
+          </p>
+
+        )}
 
       </div>
 
-      {/* Recommendation */}
+      {/* RECOMMENDATION */}
 
-      <div className="rounded-3xl border border-emerald-500/30 bg-emerald-500/10 p-8">
+      <div className="rounded-3xl border border-emerald-500/30 bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 p-8">
 
-        <h2 className="text-2xl font-bold">
+        <h2 className="text-3xl font-black">
           💡 AI Recommendation
         </h2>
 
-        <p className="mt-5 text-gray-300 leading-8">
-          {data.recommendation}
+        <p className="mt-6 leading-8 text-gray-300">
+
+          {recommendation}
+
         </p>
 
       </div>
