@@ -1,46 +1,23 @@
-<div align="center">
+# 🧠 KARIA
+### *Kenya Academic Research & Intelligent Assistant*
 
-# 🎓 KARIA
+<p align="center">
 
-### AI Student Operating System powered by Gemma 4
+![Python](https://img.shields.io/badge/Python-3.13-blue?style=for-the-badge&logo=python)
+![React](https://img.shields.io/badge/React-Frontend-61DAFB?style=for-the-badge&logo=react)
+![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?style=for-the-badge&logo=fastapi)
+![Gemma 4](https://img.shields.io/badge/Powered%20by-Gemma%204-success?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-orange?style=for-the-badge)
 
-Transforming the way university students understand assignments, plan their studies, and access academic opportunities through intelligent AI assistance.
-
-![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.116-009688?style=for-the-badge&logo=fastapi)
-![Python](https://img.shields.io/badge/Python-3.13-3776AB?style=for-the-badge&logo=python)
-![Gemma](https://img.shields.io/badge/Gemma_4-AI-red?style=for-the-badge)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-38BDF8?style=for-the-badge&logo=tailwindcss)
-
----
-
-## 🚀 Built for the Gemma 4 Hackathon
-
-KARIA is an AI-powered Student Operating System that helps students move from confusion to clarity by transforming complex academic tasks into actionable plans.
-
-Instead of simply answering questions, KARIA acts as an intelligent academic assistant capable of understanding assignments, generating structured study plans, assisting with research, and supporting students throughout their university journey.
-
-</div>
+</p>
 
 ---
 
-# 🌍 The Problem
+# 🚀 What is KARIA?
 
-University students spend countless hours trying to understand assignment instructions, estimate workload, organize study schedules, and prepare quality submissions.
+KARIA is an AI-powered academic ecosystem designed to help university students study smarter, complete assignments efficiently, discover opportunities, and connect with the right peers.
 
-Most AI tools behave like generic chatbots, requiring students to repeatedly ask follow-up questions before receiving meaningful guidance.
-
-This creates unnecessary cognitive overload and reduces productivity.
-
----
-
-# 💡 Our Solution
-
-KARIA combines document understanding, structured reasoning, and conversational AI into one unified academic workspace.
-
-Instead of only answering questions, KARIA interprets academic documents, extracts key requirements, identifies risks, estimates effort, and produces actionable recommendations that students can immediately use.
-
-Powered by **Gemma 4**, KARIA transforms static assignment documents into intelligent learning experiences.
+Rather than being just another chatbot, KARIA acts as a complete academic companion powered by Google's Gemma models.
 
 ---
 
@@ -48,257 +25,274 @@ Powered by **Gemma 4**, KARIA transforms static assignment documents into intell
 
 ## 📄 Assignment Intelligence
 
-Upload an assignment PDF and instantly receive:
-
-- Assignment summary
-- Difficulty estimation
-- Estimated completion time
-- Deadline awareness
-- Deliverables extraction
-- AI-generated study roadmap
-- Submission checklist
-- Potential risks
-- Questions to ask lecturers
-- Personalized AI recommendations
-
----
-
-## 🤖 KARIA AI Assistant
-
-An intelligent academic chatbot capable of helping students with:
-
-- Coursework
-- Programming
-- Research
-- Exam preparation
-- Report writing
-- Career guidance
-- University life
-
-Unlike traditional chatbots, KARIA focuses specifically on the university learning experience.
-
----
-
-## 📊 Student Dashboard
-
-A centralized workspace where students can monitor their academic activities through an intuitive interface designed for productivity.
-
-Current dashboard modules include:
-
-- Academic overview
-- AI recommendations
-- Quick actions
-- Recent activity
-- Personalized workspace
-
----
-
-## 💼 Career & Opportunity Hub
-
-KARIA extends beyond academics by helping students discover opportunities including:
-
-- Internships
-- Freelance work
-- Scholarships
-- Student services
-- Professional networking
-
-# 🏗️ System Architecture
-
-```
-                    ┌──────────────────────┐
-                    │      React Frontend   │
-                    │  (Student Interface)  │
-                    └──────────┬────────────┘
-                               │
-                               │ HTTP Requests
-                               │
-                    ┌──────────▼────────────┐
-                    │     FastAPI Backend    │
-                    │  API & AI Orchestration│
-                    └──────────┬────────────┘
-                               │
-                               │ Prompt Engineering
-                               │
-                    ┌──────────▼────────────┐
-                    │       Gemma 4          │
-                    │  Intelligent Reasoning │
-                    └──────────┬────────────┘
-                               │
-                               ▼
-                 Structured Academic Intelligence
-```
-
----
-
-# 🧠 How We Used Gemma 4
-
-Gemma 4 is the intelligence engine behind KARIA.
-
-Rather than acting as a simple chatbot, Gemma performs structured academic reasoning across multiple workflows.
-
-## Assignment Intelligence
-
-Gemma receives extracted assignment content and produces structured JSON containing:
+Upload an assignment PDF and receive an AI-generated breakdown including:
 
 - Assignment summary
 - Difficulty analysis
 - Estimated completion time
-- Deadline interpretation
 - Deliverables
-- AI study plan
+- Study plan
+- Risks and challenges
+- Questions to ask the lecturer
 - Submission checklist
-- Risks
-- Lecturer clarification questions
-- Personalized recommendations
-
-This structured output powers the Assignment Intelligence dashboard.
+- AI recommendations
 
 ---
 
-## AI Academic Assistant
+## 🤖 KARIA GPT
 
-Gemma powers the conversational assistant capable of helping students with:
+An intelligent university assistant capable of helping with:
 
 - Programming
-- Coursework
 - Research
-- Academic writing
-- Exam preparation
-- Career guidance
-
-The assistant provides contextual responses tailored for university students.
-
----
-
-## Intelligent Academic Planning
-
-Instead of only generating text, Gemma helps students understand:
-
-- what needs to be done,
-- how difficult it is,
-- how long it will take,
-- what should be completed first,
-- and what risks may prevent successful submission.
-
-This transforms AI from a conversational tool into an academic planning engine.
+- Report writing
+- Exams
+- Career advice
+- University life
+- Academic explanations
+- Learning difficult concepts
 
 ---
 
-# 🛠️ Technology Stack
+## 🎯 KARIA Match
 
-## Frontend
+Find the right academic partners based on:
+
+- Skills
+- Interests
+- Department
+- Programming languages
+- Projects
+- Collaboration preferences
+
+Helping students build stronger project teams and study groups.
+
+---
+
+## 💼 KARIA Opportunities
+
+Discover opportunities such as:
+
+- Internships
+- Scholarships
+- Hackathons
+- Competitions
+- Conferences
+- Graduate programs
+- AI Challenges
+- Remote opportunities
+
+---
+
+# 🏗️ Tech Stack
+
+### Frontend
 
 - React
 - TailwindCSS
 - JavaScript
-- React Router
+- PDF.js
 
----
-
-## Backend
+### Backend
 
 - FastAPI
 - Python
-- REST API
 
----
+### AI
 
-## Artificial Intelligence
-
-- Gemma 4
+- Google Gemma 4
 - Google AI Studio API
-- Prompt Engineering
-- Structured JSON Generation
 
 ---
 
-## Document Processing
-
-- PDF Text Extraction
-- Assignment Parsing
-- AI Analysis Pipeline
-
----
-
-# 📂 Project Structure
+# 📁 Project Structure
 
 ```
-KARIA
-
-├── frontend
+KARIA/
 │
-│   ├── pages
-│   ├── components
-│   ├── services
-│   ├── routes
-│   └── data
+├── FRONTEND/
+│   ├── src/
+│   ├── public/
+│   └── package.json
 │
-├── backend-python
-│
-│   ├── ai
-│   ├── routes
+├── BACKEND-PYTHON/
+│   ├── ai/
+│   ├── routes/
 │   ├── main.py
-│   └── requirements.txt
+│   ├── requirements.txt
+│   └── .env
 │
 └── README.md
 ```
 
 ---
 
-# 🚀 Future Roadmap
+# ⚙️ Installation
 
-KARIA is designed as a foundation for a complete AI-powered student ecosystem.
+## Clone the repository
 
-Future development includes:
+```bash
+git clone https://github.com/gavingav254/karia.git
+```
 
-- AI-powered timetable generation
-- Smart revision planner
-- Automatic deadline synchronization
-- Resume & portfolio generation
-- Internship recommendation engine
-- Student collaboration matching
-- University marketplace
+```bash
+cd karia
+```
+
+---
+
+# Backend Setup
+
+```bash
+cd BACKEND-PYTHON
+```
+
+Create a virtual environment
+
+```bash
+python -m venv venv
+```
+
+Activate it
+
+Windows
+
+```bash
+venv\Scripts\activate
+```
+
+Mac/Linux
+
+```bash
+source venv/bin/activate
+```
+
+Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Create a `.env` file
+
+```env
+GOOGLE_API_KEY=YOUR_API_KEY
+```
+
+Run backend
+
+```bash
+uvicorn main:app --reload
+```
+
+Backend runs on
+
+```
+http://127.0.0.1:8000
+```
+
+---
+
+# Frontend Setup
+
+```bash
+cd FRONTEND
+```
+
+Install packages
+
+```bash
+npm install
+```
+
+Run
+
+```bash
+npm run dev
+```
+
+---
+
+# Current Modules
+
+- ✅ Assignment Intelligence
+- ✅ KARIA GPT
+- ✅ KARIA Match
+- ✅ KARIA Opportunities
+
+---
+
+# 🚧 Roadmap
+
+Upcoming features include:
+
+- Authentication
+- User profiles
+- Saved conversations
+- Assignment history
+- AI memory
+- Study planner
+- Timetable integration
+- Campus events
+- Notifications
+- Voice assistant
 - Mobile application
-- Offline Gemma deployment for privacy-first inference
 
 ---
 
-# 👥 Team
+# 🤝 Contributing
 
-### Gavin Chesebe
-**AI Engineer • Full-Stack Developer • AI Systems Architect**
+Contributions are welcome.
 
-- System Architecture
-- Frontend Development
-- Backend Development
-- AI Integration
-- Prompt Engineering
-- Product Vision
+1. Fork the repository
 
----
+2. Create a new branch
 
-### Sherry Mwangi
-**Product Designer & User Experience**
+```bash
+git checkout -b feature-name
+```
 
-- User Experience Design
-- Product Research
-- User Journey Planning
-- Interface Design Support
-- Product Validation
+3. Commit your changes
 
----
+```bash
+git commit -m "Added new feature"
+```
 
-# 📄 License
+4. Push
 
-This project is released under the MIT License.
+```bash
+git push origin feature-name
+```
+
+5. Open a Pull Request
 
 ---
 
-<div align="center">
+# 📜 License
 
-### Built with ❤️ using Gemma 4
+This project is licensed under the MIT License.
 
-**KARIA — Reimagining the Student Experience with AI**
+---
 
-</div>
+# 👨‍💻 Developers
+
+**Gavin Chesebe** **Sherry Mwangi**
+
+AI Engineer • Mobile Developer • Vibe Coder • Automation Architect
+
+
+GitHub
+
+https://github.com/gavingav254
+
+---
+
+# ⭐ Support
+
+If you like this project, consider giving it a ⭐ on GitHub.
+
+It helps others discover KARIA and supports future development.
+
+---
+
+> **KARIA — Empowering students with AI, one assignment at a time.**
