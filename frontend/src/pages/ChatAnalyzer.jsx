@@ -63,13 +63,73 @@ export default function ChatAnalyzer() {
 
       let reply = "";
 
-      if (typeof data.response === "string") {
-        reply = data.response;
-      } else if (data.response?.raw_response) {
-        reply = data.response.raw_response;
-      } else {
-        reply = JSON.stringify(data.response, null, 2);
-      }
+if (typeof data.response === "string") {
+  reply = data.response;
+}
+
+else if (data.response?.raw_response) {
+  reply = data.response.raw_response;
+}
+
+else if (typeof data.response === "object") {
+
+  const obj = data.response;
+
+  reply = "";
+
+  Object.entries(obj).forEach(([key, value]) => {
+
+    const title = key
+      .replace(/_/g, " ")
+      .replace(/\b\w/g, c => c.toUpperCase());
+
+    reply += `## ${title}\n\n`;
+
+    if (Array.isArray(value)) {
+
+      value.forEach((item) => {
+
+        if (typeof item === "object") {
+
+          Object.entries(item).forEach(([k, v]) => {
+            reply += `• ${k.replace(/_/g, " ")}: ${v}\n`;
+          });
+
+          reply += "\n";
+
+        } else {
+
+          reply += `• ${item}\n`;
+
+        }
+
+      });
+
+    }
+
+    else if (typeof value === "object" && value !== null) {
+
+      Object.entries(value).forEach(([k, v]) => {
+        reply += `• ${k.replace(/_/g, " ")}: ${v}\n`;
+      });
+
+    }
+
+    else {
+
+      reply += `${value}\n`;
+
+    }
+
+    reply += "\n";
+
+  });
+
+}
+
+else {
+  reply = JSON.stringify(data.response, null, 2);
+}
 
       setMessages((prev) => [
         ...prev,

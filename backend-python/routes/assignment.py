@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
 
-from ai.gemma import ask_gemma
+from ai.gemma import ask_gemma_json
 from ai.prompts import ASSIGNMENT_PROMPT
 
 router = APIRouter(prefix="/api")
@@ -16,11 +16,12 @@ def analyze(request: AssignmentRequest):
     try:
         print("✅ REQUEST RECEIVED")
 
-        full_prompt = ASSIGNMENT_PROMPT.format(
-            assignment=request.prompt
-        )
+        full_prompt = ASSIGNMENT_PROMPT.replace(
+    "<<ASSIGNMENT>>",
+    request.prompt
+)
 
-        response = ask_gemma(full_prompt)
+        response = ask_gemma_json(full_prompt)
 
         return {
             "success": True,
