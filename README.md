@@ -276,7 +276,8 @@ This project is licensed under the MIT License.
 
 # 👨‍💻 Developers
 
-**Gavin Chesebe** **Sherry Mwangi**
+**Gavin Chesebe** 
+**Sherry Mwangi**
 
 AI Engineer • Mobile Developer • Vibe Coder • Automation Architect
 
