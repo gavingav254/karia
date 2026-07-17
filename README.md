@@ -278,7 +278,6 @@ This project is licensed under the MIT License.
 
 **Gavin Chesebe** 
 
-**Sherry Mwangi**
 
 AI Engineer • Mobile Developer • Vibe Coder • Automation Architect
 
