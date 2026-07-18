@@ -1,5 +1,5 @@
 # 🧠 KARIA
-### *Kenya Academic Research & Intelligent Assistant*
+### *Knowledge Academic Research & Intelligent Assistant*
 
 <p align="center">
 
