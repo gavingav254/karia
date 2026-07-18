@@ -2,6 +2,10 @@
 ### *Knowledge Academic Research & Intelligent Assistant*
 
 <p align="center">
+  <img src="https://github.com/gavingav254/karia/blob/master/assets/karia-hero.png?raw=true" alt="KARIA - Your University. Intelligent. Organized. Unlocked." width="100%">
+</p>
+
+<p align="center">
 
 ![Python](https://img.shields.io/badge/Python-3.13-blue?style=for-the-badge&logo=python)
 ![React](https://img.shields.io/badge/React-Frontend-61DAFB?style=for-the-badge&logo=react)
